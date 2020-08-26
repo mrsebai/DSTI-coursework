@@ -1,0 +1,170 @@
+
+Question 3:
+-----------
+Q3.
+Using the database WideWorldImporters, write a T-SQL stored procedure called ReportCustomerTurnover.
+This procedure takes two parameters: Choice and Year, both integers.
+
+When Choice = 1 and Year = <aYear>, ReportCustomerTurnover selects all the customer names and their total monthly turnover (invoiced value) for the year <aYear>.
+
+When Choice = 2 and Year = <aYear>, ReportCustomerTurnover  selects all the customer names and their total quarterly (3 months) turnover (invoiced value) for the year <aYear>.
+
+When Choice = 3, the value of Year is ignored and ReportCustomerTurnover  selects all the customer names and their total yearly turnover (invoiced value).
+
+When no value is provided for the parameter Choice, the default value of Choice must be 1.
+When no value is provided for the parameter Year, the default value is 2013. This doesn't impact Choice = 3.
+
+For Choice = 3, the years can be hard-coded within the range of [2013-2016].
+
+NULL values in the resultsets are not acceptable and must be substituted to 0.
+
+All output resultsets are ordered by customer names alphabetically.
+
+Example datasets are provided for the following calls:
+EXEC dbo.ReportCustomerTurnover;
+EXEC dbo.ReportCustomerTurnover 1, 2014;
+EXEC dbo.ReportCustomerTurnover 2, 2015;
+EXEC dbo.ReportCustomerTurnover 3;
+
+
+SQL Query:
+----------
+
+USE [WideWorldImporters]
+GO
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+IF OBJECT_ID ( 'dbo.ReportCustomerTurnover', 'P' ) IS NOT NULL   
+    DROP PROCEDURE dbo.ReportCustomerTurnover;  
+GO 
+-- =============================================
+-- Author:		Maher SEBAI
+-- Create date: 26-Dec-2018
+-- Description:	Report Customer Turnover
+-- =============================================
+CREATE PROCEDURE ReportCustomerTurnover 
+	-- Add the parameters for the stored procedure here
+	@Choice int = 1, 
+	@Year int = 2013
+AS
+BEGIN
+	-- SET NOCOUNT ON added to prevent extra result sets from
+	-- interfering with SELECT statements.
+	SET NOCOUNT ON;
+
+    -- Insert statements for procedure here
+	--SELECT @Choice, @Year
+	-- For Choice = 1, we report the Monthly Turnover for the selected year 
+	-- if no second parameter for year, then default year = 2013
+	IF @Choice = 1
+	BEGIN
+		-- Execute Monthly query: Pivoting Monthly InvoiceTotal
+		select	CustomerName,
+				coalesce([1], 0) as Jan,
+				coalesce([2], 0) as Feb,
+				coalesce([3], 0) as Mar,
+				coalesce([4], 0) as Apr,
+				coalesce([5], 0) as May,
+				coalesce([6], 0) as Jun,
+				coalesce([7], 0) as Jul,
+				coalesce([8], 0) as Aug,
+				coalesce([9], 0) as Sep,
+				coalesce([10],0) as Oct,
+				coalesce([11],0) as Nov,
+				coalesce([12],0) as [Dec]
+
+		from (
+		select	Cu.CustomerName,
+				MONTH(It.InvoiceDate) as InvoiceMonth, 
+				sum(It.InvoiceTotal) as InvoiceTotal
+		from	Sales.Customers as Cu
+				left join (
+					select I.CustomerID, I.InvoiceID, I.InvoiceDate, sum(Il.Quantity * Il.UnitPrice) as InvoiceTotal
+					from	Sales.Invoices as I		
+							join Sales.InvoiceLines as Il on I.InvoiceID = Il.InvoiceID	
+					where	YEAR(I.InvoiceDate) = @Year
+					group by I.CustomerID, I.InvoiceID, I.InvoiceDate
+				) as It	on Cu.CustomerID = It.CustomerID
+		group by Cu.CustomerName, MONTH(It.InvoiceDate)
+		
+		) as SourceTable
+		Pivot (
+			max(InvoiceTotal) for InvoiceMonth in ([1],[2],[3],[4],[5],[6],[7],[8],[9],[10],[11],[12])
+		) as PivotTable 
+		order by CustomerName
+
+	END --IF @Choice = 1
+	ELSE
+	BEGIN
+	-- For Choice = 1, we report the Monthly Turnover for the selected year 
+	-- if no second parameter for year, then default year = 2013
+	IF  @Choice = 2
+	BEGIN
+		-- Execute Quaterly query: Pivoting Quarterly InvoiceTotal
+		select	CustomerName,
+				coalesce([1],0) as Q1,
+				coalesce([2],0) as Q2,
+				coalesce([3],0) as Q3,
+				coalesce([4],0) as Q4
+		from (
+		select	Cu.CustomerName,
+				datepart(quarter, It.InvoiceDate) as InvoiceQuarter, 
+				sum(It.InvoiceTotal) as InvoiceTotal
+		from	Sales.Customers as Cu
+				left join (
+					select I.CustomerID, I.InvoiceID, I.InvoiceDate, sum(Il.Quantity * Il.UnitPrice) as InvoiceTotal
+					from	Sales.Invoices as I		
+							join Sales.InvoiceLines as Il on I.InvoiceID = Il.InvoiceID	
+					where	YEAR(I.InvoiceDate) = 2015
+					group by I.CustomerID, I.InvoiceID, I.InvoiceDate
+				) as It	on Cu.CustomerID = It.CustomerID
+		group by Cu.CustomerName, datepart(quarter, It.InvoiceDate)
+		
+		) as SourceTable
+		Pivot (
+			max(InvoiceTotal) for InvoiceQuarter in ([1],[2],[3],[4])
+		) as PivotTable 
+		order by CustomerName
+	END --IF @Choice = 2
+	ELSE
+	BEGIN
+	IF @Choice = 3
+	BEGIN
+		-- Execute Yearly Turnover By pivoting InvoiceTotal from 2013 to 2016
+		-- second parameter not taken into account
+		select	CustomerName,
+				coalesce([2013],0) as [2013],
+				coalesce([2014],0) as [2014],
+				coalesce([2015],0) as [2015],
+				coalesce([2016],0) as [2016]
+		from (
+		select	Cu.CustomerName as CustomerName,
+				sum(Il.Quantity * Il.UnitPrice) as InvoiceTotal,
+				YEAR(I.InvoiceDate) as InvoiceYear
+		
+		from	Sales.Customers as Cu,
+				Sales.Invoices as I,
+				Sales.InvoiceLines as Il
+		where	Cu.CustomerID = I.CustomerID
+				and I.InvoiceID = Il.InvoiceID
+		group by Cu.CustomerName, YEAR(I.InvoiceDate)
+		
+		) as SourceTable
+		Pivot (
+			max(InvoiceTotal) for InvoiceYear in ([2013],[2014],[2015],[2016])
+		) as PivotTable 
+		order by CustomerName
+
+	END -- IF @Choice = 3
+	ELSE
+	BEGIN
+	PRINT 'Invalid Procedure Input Paremeter: Choice in [1..3], Year in [2013..2016]'
+	END -- ELSE @Choice = 3
+	END -- ELSE @Choice = 2
+	END -- ELSE @Choice = 1
+END
+GO
+
+EXEC dbo.ReportCustomerTurnover 1, 2015; 
