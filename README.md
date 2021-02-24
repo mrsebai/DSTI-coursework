@@ -28,3 +28,15 @@ Using [WideWorldImporters Sample Database for SQL Server](https://github.com/mic
 - [Question & solution 3](SQL-Unit/SQL-Answer-3.txt)
 - [Question & solution 4](SQL-Unit/SQL-Answer-4.txt)
 - [Question & solution 5](SQL-Unit/SQL-Answer-5.txt)
+
+## Fondation and Advanced Statistics for Machine Learning:
+
+## Survival Analysis:
+
+## metaheuristics optimization:
+
+## Semantic Web:
+
+## Agent-Based Modeling:
+
+## Intro To Deep Learning:
