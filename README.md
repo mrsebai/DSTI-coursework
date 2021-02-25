@@ -47,7 +47,16 @@ In the report, given the Paris Metro Map, we solved a [Travel Salesman Problem](
 - [Link to the R report](Maher-SEBAI-MetaH-report.pdf)
 
 ## Semantic Web Unit:
+[Semantic Web](https://en.wikipedia.org/wiki/Semantic_Web) learning unit is all about the data formats and the technologies to enable it like [RDF](https://en.wikipedia.org/wiki/Resource_Description_Framework), [N-3](https://en.wikipedia.org/wiki/Notation3), [Turtle](https://en.wikipedia.org/wiki/Turtle_(syntax)), How to query these data using [SPARQL](https://en.wikipedia.org/wiki/SPARQL) and how to expand the vocabulary using [OWL](https://en.wikipedia.org/wiki/Web_Ontology_Language) ontology.
+
+- [Link to report](000-Maher_SEBAI_handout_DSTI_SemanticWeb.pdf)
 
 ## Agent-Based Modeling Unit:
+A fun project learning multi-agent environment modeling using [Netlogo](https://ccl.northwestern.edu/netlogo/) language.
+
+- [Link to Netlogo project code](langton-ant-Maher_SEBAI.nlogo)
 
 ## Intro To Deep Learning Unit:
+Foundations of modern Deep learning. In the module assigment a [Mask R-CNN](https://arxiv.org/abs/1703.06870#:~:text=The%20method%2C%20called%20Mask%20R,CNN%2C%20running%20at%205%20fps.) [pretrained model](https://github.com/matterport/Mask_RCNN) is used in inference mode. This project set the tone for a more ambitious deep dive in Deep learning modeling for a [semantic segmentation project](https://github.com/mrsebai/aerial-tile-segmentation) using Tensorflow 2.x in my internship at Airbus.
+
+- [Link to report](Mask%20R-CNN%20report%20-%20Maher-SEBAI.pdf)
