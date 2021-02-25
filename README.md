@@ -29,14 +29,19 @@ Using [WideWorldImporters Sample Database for SQL Server](https://github.com/mic
 - [Question & solution 4](SQL-Unit/SQL-Answer-4.txt)
 - [Question & solution 5](SQL-Unit/SQL-Answer-5.txt)
 
-## Fondation and Advanced Statistics for Machine Learning:
+## Fondation and Advanced Statistics for Machine Learning Unit:
+Two intensive learning unit focusing on classical statistical modeling methods. The foundation part concentrate on discrete and continuous probability distribution, density functions, univariate linear regression and hypothesis testing.
+- [link to Fondation Statistics Exam](Fsml%20Maher%20SEBAI.pdf)
 
-## Survival Analysis:
+The Advanced part of the learning module addresses advanced statistical methods including multivariate linear models, Analysis of Variance,Model Regularization methods (Lasso & Ridge), Model selection methods, Decision trees, baggind and boosting and link to Random Forest technique, Dimensionality reduction using Principal Component Analysis.
+- [link to Advanced Statistics Exam](ASML-EXAM-Maher-SEBAI.pdf)
 
-## metaheuristics optimization:
+## Survival Analysis Unit:
 
-## Semantic Web:
+## metaheuristics optimization Unit:
 
-## Agent-Based Modeling:
+## Semantic Web Unit:
 
-## Intro To Deep Learning:
+## Agent-Based Modeling Unit:
+
+## Intro To Deep Learning Unit:
