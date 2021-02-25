@@ -18,8 +18,8 @@ Some examples:
 
 ### Implementation:
 
-- [link to c file ](C-Programming-Unit/maher_formal_engine.c)
-- [link to log file](C-Programming-Unit/MaherFormalEngine.log.txt)
+- [Link to c file ](C-Programming-Unit/maher_formal_engine.c)
+- [Link to log file](C-Programming-Unit/MaherFormalEngine.log.txt)
 
 ## SQL Unit:
 Using [WideWorldImporters Sample Database for SQL Server](https://github.com/microsoft/sql-server-samples/tree/master/samples/databases/wide-world-importers), the 5 hours exam consists of 5 queries intended to produce table results that should perfectly match a provided ones.
@@ -31,16 +31,20 @@ Using [WideWorldImporters Sample Database for SQL Server](https://github.com/mic
 
 ## Fondation and Advanced Statistics for Machine Learning Unit:
 Two intensive learning unit focusing on classical statistical modeling methods. The foundation part concentrate on discrete and continuous probability distribution, density functions, univariate linear regression and hypothesis testing.
-- [link to Fondation Statistics Exam](Fsml%20Maher%20SEBAI.pdf)
+- [Link to Fondation Statistics Exam](Fsml%20Maher%20SEBAI.pdf)
 
 The Advanced part of the learning module addresses advanced statistical methods including multivariate linear models, Analysis of Variance,Model Regularization methods (Lasso & Ridge), Model selection methods, Decision trees, baggind and boosting and link to Random Forest technique, Dimensionality reduction using Principal Component Analysis.
-- [link to Advanced Statistics Exam](ASML-EXAM-Maher-SEBAI.pdf)
+- [Link to Advanced Statistics Exam](ASML-EXAM-Maher-SEBAI.pdf)
 
 ## Survival Analysis Unit:
 The produced report written in `R` attempts to analyse two Birth spacing datasets in the context of Event History Analysis, a field that borrows a lot of the Clinical [Survival Analysis](https://en.wikipedia.org/wiki/Survival_analysis) techniques to study sociological and historical phenomena. Both datasets are provided by the Medical Birth Registry of Norway. The first dataset describes the first to second birth spacing. The second dataset, in the same spirit, describes the second to third birth spacing. The two dataset does not share exactly the same covariates. We will try to study and highlight what factor is influential for the observed birth spacing. In the first section we will import, clean the two datasets and introduce the embedded covariates. In the second section we perform some exploratory analysis that will guide us in the remaining report using [Kaplan–Meier estimator](https://en.wikipedia.org/wiki/Kaplan%E2%80%93Meier_estimator). In the third section [logrank test](https://en.wikipedia.org/wiki/Logrank_test) for groups will helps us discover the first influential categorical factors. the next section, [Cox Proportional hazard modeling](https://en.wikipedia.org/wiki/Proportional_hazards_model) will help us select the significant covariate and quantify their effect size. The conclusion will be the occasion to list our findings.
-- [link to the R report](Maher-SEBAI-Birth_Spacing-Report.pdf)
+- [Link to the R report](Maher-SEBAI-Birth_Spacing-Report.pdf)
 
-## metaheuristics optimization Unit:
+## Metaheuristic Optimization Unit:
+A learning module focusing on [Metaheuristic Optimization](http://www.scholarpedia.org/article/Metaheuristic_Optimization) Algorithms. Studied Algos include: Simulated Annealing, Genetic Algorithm, Ant Colony Optimization, Particul Swarm etc ...
+In the report, given the Paris Metro Map, we solved a [Travel Salesman Problem](https://en.wikipedia.org/wiki/Travelling_salesman_problem) Variation by expressing it as [Hamiltonian Path](https://en.wikipedia.org/wiki/Hamiltonian_path) finding problem. The slides expose our approach, the `R` packages used and the obtained results.
+
+- [Link to the R report](Maher-SEBAI-MetaH-report.pdf)
 
 ## Semantic Web Unit:
 
