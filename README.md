@@ -59,6 +59,6 @@ A fun project learning multi-agent environment modeling using [Netlogo](https://
 - [Link to Netlogo project code](langton-ant-Maher_SEBAI.nlogo)
 
 ## Intro To Deep Learning Unit
-Foundations of modern Deep learning. In the module assignment a [Mask R-CNN](https://arxiv.org/abs/1703.06870#:~:text=The%20method%2C%20called%20Mask%20R,CNN%2C%20running%20at%205%20fps.) [pretrained model](https://github.com/matterport/Mask_RCNN) is used in inference mode. This project set the tone for a more ambitious deep dive in Deep learning modeling for a [semantic segmentation project](https://github.com/mrsebai/aerial-tile-segmentation) using Tensorflow 2.x in my internship at Airbus.
+Foundations of modern Deep learning. In the module assignment a [Mask R-CNN](https://arxiv.org/abs/1703.06870#:~:text=The%20method%2C%20called%20Mask%20R,CNN%2C%20running%20at%205%20fps.) [pretrained model](https://github.com/matterport/Mask_RCNN) is used in inference mode. This project set the stage for a more ambitious deep dive in Deep learning modeling for a [semantic segmentation project](https://github.com/mrsebai/aerial-tile-segmentation) using Tensorflow 2.x in my internship at Airbus.
 
 - [Link to report](Mask%20R-CNN%20report%20-%20Maher-SEBAI.pdf)
